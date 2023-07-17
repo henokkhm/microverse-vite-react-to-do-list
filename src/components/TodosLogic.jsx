@@ -21,10 +21,22 @@ const TodosLogic = () => {
       completed: false,
     },
   ]);
+
+  const toggleTodoCompleted = (todoID) => {
+    setTodos((prevTodoList) =>
+      prevTodoList.map((todoItem) => {
+        if (todoItem.id === todoID) {
+          return { ...todoItem, completed: !todoItem.completed };
+        }
+        return todoItem;
+      }),
+    );
+  };
+
   return (
     <div>
       <InputTodo />
-      <TodosList todosProps={todos} />
+      <TodosList toggleTodoCompleted={toggleTodoCompleted} todosProps={todos} />
     </div>
   );
 };
