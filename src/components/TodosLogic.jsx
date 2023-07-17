@@ -39,9 +39,14 @@ const TodosLogic = () => {
     );
   };
 
+  const addTodoItem = (title) => {
+    const newTodo = { id: todos.length + 1, title, completed: false };
+    setTodos((prevTodoList) => [newTodo, ...prevTodoList]);
+  };
+
   return (
     <div>
-      <InputTodo />
+      <InputTodo addTodoItem={addTodoItem} />
       <TodosList
         toggleTodoCompleted={toggleTodoCompleted}
         deleteTodoItem={deleteTodoItem}
