@@ -33,10 +33,20 @@ const TodosLogic = () => {
     );
   };
 
+  const deleteTodoItem = (todoID) => {
+    setTodos((prevTodoList) =>
+      prevTodoList.filter((todoItem) => todoItem.id !== todoID),
+    );
+  };
+
   return (
     <div>
       <InputTodo />
-      <TodosList toggleTodoCompleted={toggleTodoCompleted} todosProps={todos} />
+      <TodosList
+        toggleTodoCompleted={toggleTodoCompleted}
+        deleteTodoItem={deleteTodoItem}
+        todosProps={todos}
+      />
     </div>
   );
 };
