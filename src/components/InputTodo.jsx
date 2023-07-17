@@ -5,8 +5,13 @@ const InputTodo = ({ addTodoItem }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    addTodoItem(todoInput);
-    setTodoInput('');
+    const trimmedInput = todoInput.trim();
+    if (trimmedInput === '') {
+      alert('Please add item');
+    } else {
+      addTodoItem(todoInput);
+      setTodoInput('');
+    }
   };
 
   return (
